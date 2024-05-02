@@ -7,7 +7,7 @@ using namespace std;
 /*
     TODO base:
         DONE * Insert sort
-        * Bubble sort
+        DONE * Bubble sort
         * Selection sort
 
         * Quick sort
@@ -39,4 +39,20 @@ void insert_sort(int *array, int size) {
         }
         array[j+1] = val;
     }
+}
+
+// Bubble Sort
+void bubble_sort(int *array, int size) {
+    int zamiana, pom;
+    do {
+        zamiana = 0;
+        for(int i=0; i<size-1; i++) {
+            if (array[i]>array[i+1]){
+                pom = array[i];
+                array[i] = array[i+1];
+                array[i+1] = pom;
+                zamiana = 1;
+            }
+        }
+    }while (zamiana);
 }

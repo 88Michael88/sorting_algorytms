@@ -24,13 +24,13 @@ char* options[OPTIONS] = {
 
 int main() {
     int option = 0;
-    int size = 0;
+    //int size = 0;
     // int *array=nullptr;
 
     while(option != FINISH) {
         int array[] = {2, 5, 1, 3, 0};
 
-        array_print(array, TEST_SIZE);
+        array_print(array, TEST_SIZE, "Before sorting: \n\t");
 
         cout<<"Podaj rozmiar tablicy: "<<endl;
         cout<<TEST_SIZE<<endl;
@@ -50,6 +50,7 @@ int main() {
             insert_sort(array, TEST_SIZE);
             break;
         case 1:
+            bubble_sort(array, TEST_SIZE);
             break;
         case 2:
             break;
@@ -65,7 +66,7 @@ int main() {
             break;
         }
 
-        array_print(array, TEST_SIZE);
+        array_print(array, TEST_SIZE, "After sorting: \n\t");
 
         // delete[] array;       
         cout<<endl<<endl;
