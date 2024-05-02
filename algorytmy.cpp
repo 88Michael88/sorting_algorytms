@@ -4,14 +4,18 @@
 
 using namespace std;
 
+// Extra functions for heap sort
+void build_max_heap(int *array, int size);
+void heapify(int *array, int size, int i);
+
 /*
     TODO base:
         DONE * Insert sort
         DONE * Bubble sort
         DONE * Selection sort
 
-        * Quick sort
-        * Heap sort
+        DONE * Quick sort
+        DONE * Heap sort
         * Shell sort
 
     
@@ -96,4 +100,38 @@ void quick_sort(int *array, int begin, int end) {
 
     if(j>begin) quick_sort(array, begin, j);
     if(i<end)   quick_sort(array, i, end);
+}
+
+// Heap Sort
+void heap_sort(int *array, int size) { 
+    build_max_heap(array, size);
+    for(int i=size-1; i>=0; i--) {
+        int temp = array[0];
+        array[0] = array[i];
+        array[i] = temp;
+        heapify(array, i, 0);
+    }
+}
+
+void build_max_heap(int *array, int size) {
+    for(int i=((size/2)-1); i>=0; i--){
+        heapify(array, size, i);
+    }
+}
+
+void heapify(int *array, int size, int i) {
+    int largest = i, temp, l_child = 2*i+1, r_child = 2*i+2;
+
+    if (l_child < size && array[l_child] > array[largest])
+        largest = l_child;
+
+    if (r_child < size && array[r_child] > array[largest])
+        largest = r_child;
+    
+    if (largest != i) {
+        temp = array[i];
+        array[i] = array[largest];
+        array[largest] = temp;
+        heapify(array, size, largest);
+    }
 }

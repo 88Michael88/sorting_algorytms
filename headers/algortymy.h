@@ -9,4 +9,6 @@ void selection_sort(int *array, int size);
 
 void quick_sort(int *array, int begin, int end);
 
+void heap_sort(int *array, int size);
+
 #endif //__algorytmy_h__

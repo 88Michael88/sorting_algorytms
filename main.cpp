@@ -59,6 +59,7 @@ int main() {
             quick_sort(array, 0, TEST_SIZE);
             break;
         case 4:
+            heap_sort(array, TEST_SIZE);
             break;
         case 5:
             break;
