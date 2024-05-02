@@ -1,12 +1,12 @@
 #include <iostream>
 #include "headers/algortymy.h"
+#include "headers/print.h"
 
 #define OPTIONS 7
 #define FINISH 6
 
 // FOR TESTING
 #define TEST_SIZE 5
-
 
 using namespace std;
 
@@ -26,9 +26,12 @@ int main() {
     int option = 0;
     int size = 0;
     // int *array=nullptr;
-    int array[] = {2, 5, 1, 3, 0};
 
     while(option != FINISH) {
+        int array[] = {2, 5, 1, 3, 0};
+
+        array_print(array, TEST_SIZE);
+
         cout<<"Podaj rozmiar tablicy: "<<endl;
         cout<<TEST_SIZE<<endl;
         // cin>>size;
@@ -44,7 +47,7 @@ int main() {
         switch (option)
         {
         case 0:
-            insert_sort(array, size);
+            insert_sort(array, TEST_SIZE);
             break;
         case 1:
             break;
@@ -61,6 +64,8 @@ int main() {
         default:
             break;
         }
+
+        array_print(array, TEST_SIZE);
 
         // delete[] array;       
         cout<<endl<<endl;

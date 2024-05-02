@@ -1,12 +1,12 @@
-
 #include "headers/algortymy.h"
+#include "headers/print.h"
 #include <iostream>
 
 using namespace std;
 
 /*
-    TODO :
-        * Insert sort
+    TODO base:
+        DONE * Insert sort
         * Bubble sort
         * Selection sort
 
@@ -27,3 +27,16 @@ using namespace std;
 */
 
 
+// Insert Sort
+void insert_sort(int *array, int size) {
+    int j;
+    for (int i=1; i<size; i++) {
+        int val = array[i];
+        j = i - 1;
+        while (j>=0 && array[j] > val) {
+            array[j+1] = array[j];
+            j--;
+        }
+        array[j+1] = val;
+    }
+}
