@@ -43,18 +43,18 @@ void insert_sort(int *array, int size) {
 
 // Bubble Sort
 void bubble_sort(int *array, int size) {
-    int zamiana, pom;
+    int change, temp;
     do {
-        zamiana = 0;
+        change = 0;
         for(int i=0; i<size-1; i++) {
             if (array[i]>array[i+1]){
-                pom = array[i];
+                temp = array[i];
                 array[i] = array[i+1];
-                array[i+1] = pom;
-                zamiana = 1;
+                array[i+1] = temp;
+                change = 1;
             }
         }
-    }while (zamiana);
+    }while (change);
 }
 
 // Selection Sort
@@ -73,4 +73,27 @@ void selection_sort(int *array, int size) {
             array[min_index] = temp;
         }
     }
+}
+
+// Quick Sort
+void quick_sort(int *array, int begin, int end) {
+    int i=begin, j=end-1, pivot, temp;
+    pivot = array[(i+j)/2];
+
+    do {
+        while(array[i]<pivot)
+            i++;
+        while(array[j]>pivot)
+            j--;
+        if(i<=j) {
+            temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+            i++;
+            j--;
+        }
+    }while(i<=j);
+
+    if(j>begin) quick_sort(array, begin, j);
+    if(i<end)   quick_sort(array, i, end);
 }

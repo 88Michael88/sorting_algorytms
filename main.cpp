@@ -32,7 +32,7 @@ int main() {
 
         array_print(array, TEST_SIZE, "Before sorting: \n\t");
 
-        cout<<"Podaj rozmiar tablicy: "<<endl;
+        cout<<"Enter array size: "<<endl;
         cout<<TEST_SIZE<<endl;
         // cin>>size;
         // array = new int[size];
@@ -56,6 +56,7 @@ int main() {
             selection_sort(array, TEST_SIZE);
             break;
         case 3:
+            quick_sort(array, 0, TEST_SIZE);
             break;
         case 4:
             break;
