@@ -62,6 +62,7 @@ int main() {
             heap_sort(array, TEST_SIZE);
             break;
         case 5:
+            shell_sort(array, TEST_SIZE);
             break;
         case FINISH:
             break;

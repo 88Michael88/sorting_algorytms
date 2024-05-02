@@ -8,6 +8,9 @@ using namespace std;
 void build_max_heap(int *array, int size);
 void heapify(int *array, int size, int i);
 
+// Extra funtions for shell sort
+void shell_insert(int *array, int size, int knuth);
+
 /*
     TODO base:
         DONE * Insert sort
@@ -16,8 +19,7 @@ void heapify(int *array, int size, int i);
 
         DONE * Quick sort
         DONE * Heap sort
-        * Shell sort
-
+        DONE * Shell sort
     
     TODO extra: 
         * Insert sort with guard
@@ -28,6 +30,8 @@ void heapify(int *array, int size, int i);
         * Double Selection sort
 
         * Quick sort - partition
+
+        * Shell Bubble sort
 */
 
 
@@ -133,5 +137,33 @@ void heapify(int *array, int size, int i) {
         array[i] = array[largest];
         array[largest] = temp;
         heapify(array, size, largest);
+    }
+}
+
+// Shell Sort
+void shell_sort(int *array, int size) {
+    int knuthNext, knuth;
+    knuthNext = knuth = 1;
+    do {
+        knuth = knuthNext;
+        knuthNext = 3*knuth+1;
+    }while(knuthNext<=size);
+
+    while(knuth>0) {
+        shell_insert(array, size, knuth);
+        knuth/=3;
+    }
+}
+
+void shell_insert(int *array, int size, int knuth) {
+    int temp;
+    for(int n=0; n<knuth; n++) {
+        for(int i=n+knuth; i<size; i+=knuth) {
+            for(int j=i-knuth; j>=0 && array[j]>array[j+knuth]; j-=knuth) {
+                temp = array[j+knuth];
+                array[j+knuth] = array[j];
+                array[j] = temp;
+            }
+        }
     }
 }
