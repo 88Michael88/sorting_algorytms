@@ -6,7 +6,7 @@ CFLAGS = -Wall
 PROJECT_NAME = project
 
 # Run all the files one by one
-all: main algorytmy print project
+all: main algorytmy print memory project
 
 # Make all the files here into .o one by one
 main: main.cpp
@@ -18,11 +18,12 @@ algorytmy: algorytmy.cpp
 print: print.cpp
 	$(CC) $(CFLAGS) -c print.cpp -o print.o
 
-
+memory: memoryManager.cpp
+	$(CC) $(CFLAGS) -c memoryManager.cpp -o memory.o
 
 # Combine all the files here into one project
 project: main.o 
-	$(CC) $(CFLAGS) main.o algorytmy.o print.o -o $(PROJECT_NAME)
+	$(CC) $(CFLAGS) main.o algorytmy.o print.o memory.o -o $(PROJECT_NAME)
 
 # Run the project
 run: 

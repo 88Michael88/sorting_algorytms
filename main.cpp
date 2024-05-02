@@ -1,14 +1,30 @@
 #include <iostream>
 #include "headers/algortymy.h"
 #include "headers/print.h"
+#include "headers/memoryManager.h"
 
 #define OPTIONS 7
 #define FINISH 6
 
-// FOR TESTING
-#define TEST_SIZE 5
-
 using namespace std;
+
+/*
+    TODO main: 
+        * timer 
+        * read from files the numerical data
+        * write to files the numerical answers
+        *  
+    
+    TODO other:
+        * finish algorytmy.cpp
+        * 
+
+*/
+
+
+
+
+int get_array_size();
 
 char* options[OPTIONS] = {
     (char*)"Insertion Sort",
@@ -20,26 +36,16 @@ char* options[OPTIONS] = {
     (char*)"Finish"
 };
 
-
-
 int main() {
     int option = 0;
-    //int size = 0;
-    // int *array=nullptr;
 
     while(option != FINISH) {
-        int array[] = {2, 5, 1, 3, 0};
-
-        array_print(array, TEST_SIZE, "Before sorting: \n\t");
-
-        cout<<"Enter array size: "<<endl;
-        cout<<TEST_SIZE<<endl;
-        // cin>>size;
-        // array = new int[size];
+        int size = get_array_size();
+        int *array=allocate_memory_for_array(size);
+        array_print(array, size, "Before sorting: \n\t");
 
 
 
-        // cout<<array<<endl;
         for(int i=0; i<OPTIONS; i++)
             cout<<i<<". "<<options[i]<<endl;
 
@@ -47,22 +53,22 @@ int main() {
         switch (option)
         {
         case 0:
-            insert_sort(array, TEST_SIZE);
+            insert_sort(array, size);
             break;
         case 1:
-            bubble_sort(array, TEST_SIZE);
+            bubble_sort(array, size);
             break;
         case 2:
-            selection_sort(array, TEST_SIZE);
+            selection_sort(array, size);
             break;
         case 3:
-            quick_sort(array, 0, TEST_SIZE);
+            quick_sort(array, 0, size);
             break;
         case 4:
-            heap_sort(array, TEST_SIZE);
+            heap_sort(array, size);
             break;
         case 5:
-            shell_sort(array, TEST_SIZE);
+            shell_sort(array, size);
             break;
         case FINISH:
             break;
@@ -70,11 +76,18 @@ int main() {
             break;
         }
 
-        array_print(array, TEST_SIZE, "After sorting: \n\t");
+        array_print(array, size, "After sorting: \n\t");
 
-        // delete[] array;       
+        free_memory_from_array(array);
         cout<<endl<<endl;
     }
 
     return 0;
+}
+
+int get_array_size() {
+    int size;
+    cout<<"Enter array size: "<<endl;
+    cin>>size;
+    return size;
 }
