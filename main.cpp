@@ -53,6 +53,7 @@ int main() {
             bubble_sort(array, TEST_SIZE);
             break;
         case 2:
+            selection_sort(array, TEST_SIZE);
             break;
         case 3:
             break;

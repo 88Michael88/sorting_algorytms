@@ -8,7 +8,7 @@ using namespace std;
     TODO base:
         DONE * Insert sort
         DONE * Bubble sort
-        * Selection sort
+        DONE * Selection sort
 
         * Quick sort
         * Heap sort
@@ -55,4 +55,22 @@ void bubble_sort(int *array, int size) {
             }
         }
     }while (zamiana);
+}
+
+// Selection Sort
+void selection_sort(int *array, int size) {
+    int temp;
+    for(int i=0; i<size-1; i++) {
+        int min_index = i;
+        for (int j=i+1; j<size; j++) {
+            if (array[j] < array[min_index]) {
+                min_index = j;
+            }
+        }
+        if (min_index != i) {
+            temp = array[i];
+            array[i] = array[min_index];
+            array[min_index] = temp;
+        }
+    }
 }
