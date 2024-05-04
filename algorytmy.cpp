@@ -161,6 +161,42 @@ void selection_sort(int *array, int size) {
     }
 }
 
+// Double Selection Sort
+void double_selection_sort(int *array, int size) {
+    int temp;
+    for (int i = 0, j = size - 1; i < j; i++, j--) { 
+        int min = array[i], max = array[i]; 
+        int min_index = i, max_index = i; 
+        for (int k = i; k <= j; k++)  { 
+            if (array[k] > max) { 
+                max = array[k]; 
+                max_index = k; 
+            } else if (array[k] < min) { 
+                min = array[k]; 
+                min_index = k; 
+            } 
+        } 
+  
+        // shifting the min. 
+        temp = array[i];
+        array[i] = array[min_index];
+        array[min_index] = temp;
+
+        // Shifting the max. The equal condition 
+        // happens if we shifted the max to arr[min_index]  
+        // in the previous swap. 
+        if (array[min_index] == max) {
+            temp = array[j];
+            array[j] = array[min_index];
+            array[min_index] = temp;
+        } else {
+            temp = array[j];
+            array[j] = array[max_index];
+            array[max_index] = temp;
+        }
+    } 
+}
+
 // Quick Sort
 void quick_sort(int *array, int begin, int end) {
     int i=begin, j=end-1, pivot, temp;
