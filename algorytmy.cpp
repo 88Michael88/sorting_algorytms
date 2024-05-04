@@ -30,7 +30,7 @@ int binarySearch(int *array, int item, int begin, int end);
 
         DONE * Bubble sort - shaker
 
-        * Double Selection sort
+        DONE * Double Selection sort
 
         * Quick sort - partition
 
