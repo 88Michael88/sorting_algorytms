@@ -2,6 +2,7 @@
 #include "headers/algortymy.h"
 #include "headers/print.h"
 #include "headers/memoryManager.h"
+#include "headers/timeManager.h"
 
 #define OPTIONS 7
 #define FINISH 6
@@ -10,7 +11,7 @@ using namespace std;
 
 /*
     TODO main: 
-        * timer 
+        DONE * timer 
         * read from files the numerical data
         * write to files the numerical answers
         *  
@@ -53,22 +54,40 @@ int main() {
         switch (option)
         {
         case 0:
+            start_timer();
             insert_sort(array, size);
+            end_timer();
+            time_print(size, options[option], get_time());
             break;
         case 1:
+            start_timer();
             bubble_sort(array, size);
+            end_timer();
+            time_print(size, options[option], get_time());
             break;
         case 2:
+            start_timer();
             selection_sort(array, size);
+            end_timer();
+            time_print(size, options[option], get_time());
             break;
         case 3:
+            start_timer();
             quick_sort(array, 0, size);
+            end_timer();
+            time_print(size, options[option], get_time());
             break;
         case 4:
+            start_timer();
             heap_sort(array, size);
+            end_timer();
+            time_print(size, options[option], get_time());
             break;
         case 5:
+            start_timer();
             shell_sort(array, size);
+            end_timer();
+            time_print(size, options[option], get_time());
             break;
         case FINISH:
             break;

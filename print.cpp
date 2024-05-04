@@ -23,3 +23,8 @@ void array_print(int *arr, int size, const char* title)
     }
     cout<<endl;
 }
+
+
+void time_print(int size, char* sort, chrono::duration<double> time) {
+    cout<<"Size of data is "<<size<<" and using "<<sort<<" it took "<<time.count()<<"s. to sort that array."<<endl;
+}
