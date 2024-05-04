@@ -8,8 +8,11 @@ using namespace std;
 void build_max_heap(int *array, int size);
 void heapify(int *array, int size, int i);
 
-// Extra funtions for shell sort
+// Extra functions for shell sort
 void shell_insert(int *array, int size, int knuth);
+
+// Extra functions for insert sort
+int binarySearch(int *array, int item, int begin, int end);
 
 /*
     TODO base:
@@ -22,8 +25,8 @@ void shell_insert(int *array, int size, int knuth);
         DONE * Shell sort
     
     TODO extra: 
-        * Insert sort with guard
-        * Insert sort with binarry search
+        DONE * Insert sort with guard
+        DONE * Insert sort with binarry search
 
         * Bubble sort - shaker
 
@@ -47,6 +50,56 @@ void insert_sort(int *array, int size) {
         }
         array[j+1] = val;
     }
+}
+
+// Insert Sort with Guard
+// Assume array = [0, 6, 7, 1, 3, 7, 8, ... ] is filled from index 1.
+void insert_sort_with_guard(int *array, int size) {
+    int j, guard;
+    for (int i=2; i<=size; i++) {
+        guard = array[i];
+        j = i-1;
+        array[0] = guard;
+        while(array[j]>guard) {
+            array[j+1] = array[j];
+            j--;
+        }
+        array[j+1] = guard;
+    }
+}
+
+// Insert Sort with Binary Search
+void insert_sort_with_BinSea(int *array, int size) {
+    int j;
+ 
+    for (int i = 1; i < size; ++i) {
+        j = i - 1;
+        int val = array[i];
+ 
+        // find pos where val should be inserted
+        int pos = binarySearch(array, val, j, 0);
+ 
+        // Move all elements after location to create space
+        while (j >= pos){
+            array[j + 1] = array[j];
+            j--;
+        }
+        array[j + 1] = val;
+    }
+}
+
+int binarySearch(int *array, int item, int begin, int end) {
+    if (begin <= end)
+        return (item > array[end]) ? (end + 1) : end;
+ 
+    int mid = (end + begin) / 2;
+ 
+    if (item == array[mid])
+        return mid + 1;
+ 
+    if (item > array[mid])
+        return binarySearch(array, item,mid + 1, begin);
+    return binarySearch(array, item, end, mid - 1);
 }
 
 // Bubble Sort

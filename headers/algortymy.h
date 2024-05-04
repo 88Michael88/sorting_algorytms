@@ -13,4 +13,9 @@ void heap_sort(int *array, int size);
 
 void shell_sort(int *array, int size);
 
+//Extra functions:
+void insert_sort_with_guard(int *array, int size);
+
+void insert_sort_with_BinSea(int *array, int size);
+
 #endif //__algorytmy_h__
