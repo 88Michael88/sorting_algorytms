@@ -1,3 +1,9 @@
 
 # Ignore the .o files 
 *.o
+
+# File with randomly genereated numbers
+dane
+
+# File with the sorted data
+*.txt
