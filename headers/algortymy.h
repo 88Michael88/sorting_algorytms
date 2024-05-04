@@ -18,4 +18,6 @@ void insert_sort_with_guard(int *array, int size);
 
 void insert_sort_with_BinSea(int *array, int size);
 
+void shaker_sort(int *array, int size);
+
 #endif //__algorytmy_h__

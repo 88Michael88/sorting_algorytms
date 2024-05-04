@@ -28,7 +28,7 @@ int binarySearch(int *array, int item, int begin, int end);
         DONE * Insert sort with guard
         DONE * Insert sort with binarry search
 
-        * Bubble sort - shaker
+        DONE * Bubble sort - shaker
 
         * Double Selection sort
 
@@ -116,6 +116,31 @@ void bubble_sort(int *array, int size) {
             }
         }
     }while (change);
+}
+
+// Shaker Sort
+void shaker_sort(int *array, int size) {
+    int l = 0, r = size-2, temp, index=0;
+	do{
+		for(int i=r; i>=l; i--){
+			if (array[i]>array[i+1]) {
+			 temp = array[i];
+				array[i] = array[i+1];
+				array[i+1] = temp;
+				index = i;
+			}
+		}
+		l = index+1;
+		for(int i=l; i<=r; i++) {
+			if (array[i]>array[i+1]) {
+			 temp = array[i];
+				array[i] = array[i+1];
+				array[i+1] = temp;
+				index = i;
+			}
+		}
+		r  = index;
+	}while(l<=r);
 }
 
 // Selection Sort
