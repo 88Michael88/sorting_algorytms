@@ -237,8 +237,8 @@ void build_max_heap(int *array, int size) {
     }
 }
 
-void heapify(int *array, int size, int i) {
-    int largest = i, temp, l_child = 2*i+1, r_child = 2*i+2;
+void heapify(int *array, int size, int node) {
+    int largest = node, temp, l_child = 2*node+1, r_child = 2*node+2;
 
     if (l_child < size && array[l_child] > array[largest])
         largest = l_child;
@@ -246,9 +246,9 @@ void heapify(int *array, int size, int i) {
     if (r_child < size && array[r_child] > array[largest])
         largest = r_child;
     
-    if (largest != i) {
-        temp = array[i];
-        array[i] = array[largest];
+    if (largest != node) {
+        temp = array[node];
+        array[node] = array[largest];
         array[largest] = temp;
         heapify(array, size, largest);
     }

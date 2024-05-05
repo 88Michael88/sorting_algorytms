@@ -76,7 +76,7 @@ int main() {
         
         int *array=allocate_memory_for_array(size);
 
-        // delay++;
+        // array_print(array, size, "Before sorting: \n\t");
 
         int count = 0;
         while (count < size && inputFile >> array[count]) {
@@ -84,45 +84,20 @@ int main() {
         }
 
         menu(); cin>>option;
-        option_selection_sort(option, array, size);
+        option_main(option, array, size);
         
 
-        time_print(size, selectionOptions[option], get_time());
+        time_print(size, options[option], get_time());
         
         string sizeStr = to_string(size);
         string timeStr = to_string(get_time().count());
 
-        commentFile << selectionOptions[option] << "\t" << sizeStr << "\t" << timeStr <<endl;
-        sortedFile << "Size of data is " << sizeStr << " and using " << selectionOptions[option] << " it took " << timeStr << "s to sort that array.\n";
+        commentFile << options[option] << "\t" << sizeStr << "\t" << timeStr <<endl;
+        sortedFile << "Size of data is " << sizeStr << " and using " << options[option] << " it took " << timeStr << "s to sort that array.\n";
 
         write_array_to_file(sortedFile, array, count);
 
         // array_print(array, size, "After sorting: \n\t");
-
-
-        // This is for testing all of the funtions with different amounts of data.
-        // if (delay%2==0)
-        //     size *= 2;
-        // else
-        //     size *= 5;
-
-        // if (option < 2) {
-        //     if (delay==12) {
-        //         delay = 0;
-        //         size = 1;
-        //         option++;
-        //         commentFile << "\n\n\n\n";
-        //     }
-        // }
-        // else {
-        //     if (delay==17) {
-        //         delay = 0;
-        //         size = 1;
-        //         option++;
-        //         commentFile << "\n\n\n\n";
-        //     }
-        // }
-        
 
         free_memory_from_array(array);
         
