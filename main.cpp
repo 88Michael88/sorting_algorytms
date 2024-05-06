@@ -13,6 +13,15 @@
 
 using namespace std;
 
+int get_array_size();
+void option_main(int option, int *array, int size, ifstream& inputFile);
+void option_insert_sort(int option, int *array, int size);
+void option_bubble_sort(int option, int *array, int size);
+void option_selection_sort(int option, int *array, int size);
+void menu();
+
+int input_data_to_file(ifstream& inputFile, int *array, int size);
+
 /*
     TODO main: 
         DONE * timer 
@@ -24,18 +33,6 @@ using namespace std;
         * 
 
 */
-
-
-
-
-int get_array_size();
-void option_main(int option, int *array, int size, ifstream& inputFile);
-void option_insert_sort(int option, int *array, int size);
-void option_bubble_sort(int option, int *array, int size);
-void option_selection_sort(int option, int *array, int size);
-void menu();
-
-int input_data_to_file(ifstream& inputFile, int *array, int size);
 
 char* insertionOptions[] = {
     (char*)"Insertion Sort",
@@ -60,14 +57,13 @@ char* options[OPTIONS] = {
     (char*)"Quick Sort",
     (char*)"Heap Sort",
     (char*)"Sheall Sort",
-    (char*)"All Algorithms", 
+    (char*)"All Algorithms",
     (char*)"Finish"
 };
 
 int main() {
     int option = 0;
-    // int delay = 0;
-    // int size = 1;
+
     cout<<"Input size of 0 to finish"<<endl;
     ofstream commentFile; openFile(commentFile, "comment.txt");
     ofstream sortedFile; openFile(sortedFile, "sort.txt");
@@ -97,6 +93,8 @@ int main() {
             write_array_to_file(sortedFile, array, count);
         }
 
+        array_print(array, size, "Data after sorting:\n");
+
         free_memory_from_array(array);
         
         closeFile(inputFile);
@@ -120,6 +118,14 @@ int get_array_size() {
 void menu() {
     for(int i=0; i<OPTIONS; i++)
         cout<<i<<". "<<options[i]<<endl;
+}
+
+int input_data_to_file(ifstream& inputFile, int *array, int size) {
+    int count = 0;
+    while (count < size && inputFile >> array[count]) {
+        count++;
+    }
+    return count;
 }
 
 void option_main(int option, int *array, int size, ifstream& inputFile) {
@@ -268,12 +274,4 @@ void option_selection_sort(int option, int *array, int size) {
         default:
             break;
         }
-}
-
-int input_data_to_file(ifstream& inputFile, int *array, int size) {
-    int count = 0;
-    while (count < size && inputFile >> array[count]) {
-        count++;
-    }
-    return count;
 }

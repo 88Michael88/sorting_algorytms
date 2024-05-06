@@ -1,4 +1,4 @@
-# Michael Moses, -- DATE -- .
+# Michael Moses, 1.05.2024r.
 # Variable names
 CC = g++
 CFLAGS = -Wall

@@ -31,22 +31,6 @@ void time_print(int size, char* sort, chrono::duration<double> time) {
 }
 
 void all_algorytms_print(char **name_array, int data, double *time_array, int rows) {
-    // +----------------+-------------+-------------+
-    // | Name           | Data        | Time        |
-    // +----------------+-------------+-------------+
-    // | Insertion Sort |
-    // +----------------+-------------+-------------+
-    // | Bubble Sort    |
-    // +----------------+-------------+-------------+
-    // | Selection Sort |
-    // +----------------+-------------+-------------+
-    // | Quick Sort     |
-    // +----------------+-------------+-------------+
-    // | Heap Sort      |
-    // +----------------+-------------+-------------+
-    // | Shell Sort     |
-    // +----------------+-------------+-------------+
-
     char* row =   (char*)"+----------------+-------------+-------------+";
     char* names = (char*)"| Name           | Data        | Time        |";
     cout<<"Warning!"<<endl<<"Assumtion: You have data * "<<rows<<" numbers in the input file."<<endl;
